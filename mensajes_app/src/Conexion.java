@@ -4,8 +4,10 @@ import utils.Fachada;
 
 public class Conexion {
 
-    public Connection get_connection(){
     Connection conn = null; 
+
+    public Connection get_connection(){
+    
     
             try{
                 conn = Fachada.getConnection();
@@ -18,5 +20,16 @@ public class Conexion {
 
             return conn;
     }
+ 
     
+    public void close_connection(){
+        
+        if (conn != null) {
+            try {
+                conn.close();
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+        }
+    }    
 }
